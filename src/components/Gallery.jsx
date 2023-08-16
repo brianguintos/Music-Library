@@ -1,11 +1,17 @@
 import GalleryItem from './GalleryItem'
 
-export default function Gallery(props) {
-    const display = props.data.map((song, index) => <GalleryItem song={song} key={index} />)
+const Gallery = (props) => {
+    const data = props.data.result.read()
+
+    const display = data.map((item, index) => {
+        return (
+            <GalleryItem item={item} key={index} />
+        )
+    })
 
     return (
         <div>
-        {display}
+            {display}
         </div>
     )
 }
